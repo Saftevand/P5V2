@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d77c44f9-b0b5-4444-88d6-13fff1fb8624" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JDAT.iml" afterPath="$PROJECT_DIR$/JDAT.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/SW504/Program.java" afterPath="$PROJECT_DIR$/src/main/java/SW504/Program.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -18,7 +20,7 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
+            <state relative-caret-position="966">
               <caret line="46" column="28" lean-forward="false" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
               <folding />
             </state>
@@ -28,25 +30,25 @@
       <file leaf-file-name="Program.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/SW504/Program.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="226" column="130" lean-forward="true" selection-start-line="226" selection-start-column="130" selection-end-line="226" selection-end-column="130" />
+            <state relative-caret-position="2100">
+              <caret line="249" column="4" lean-forward="false" selection-start-line="249" selection-start-column="4" selection-end-line="249" selection-end-column="4" />
               <folding>
+                <element signature="method#main#0;class#Program#0" expanded="false" />
                 <element signature="method#UiServerSetup#0;class#Program#0" expanded="false" />
+                <element signature="method#initImageReaders#0;class#Program#0" expanded="false" />
                 <element signature="method#trainNetwork_withTransformation#0;class#Program#0" expanded="false" />
-                <element signature="method#trainNetwork_withoutTransformation#0;class#Program#0" expanded="false" />
                 <element signature="method#saveNetwork#0;class#Program#0" expanded="false" />
                 <element signature="method#evaluateNetwork#0;class#Program#0" expanded="false" />
                 <element signature="method#maxPool#0;class#Program#0" expanded="false" />
                 <element signature="method#earlyStopTraining#0;class#Program#0" expanded="false" />
-                <element signature="e#9716#9725#0" expanded="true" />
-                <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
                 <element signature="method#inception5Builder#0;class#Program#0" expanded="false" />
                 <element signature="method#inception6Builder#0;class#Program#0" expanded="false" />
                 <element signature="method#inception7Builder#0;class#Program#0" expanded="false" />
+                <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
                 <element signature="method#lenetConf#0;class#Program#0" expanded="false" />
-                <element signature="method#alexnetConf#0;class#Program#0" expanded="false" />
                 <element signature="method#lenetModel#0;class#Program#0" expanded="false" />
                 <element signature="method#alexnetModel#0;class#Program#0" expanded="false" />
+                <element signature="method#fullyConnected#0;class#Program#0" expanded="false" />
                 <element signature="method#convInit#0;class#Program#0" expanded="false" />
                 <element signature="method#conv3x3#0;class#Program#0" expanded="false" />
                 <element signature="method#conv5x5#0;class#Program#0" expanded="false" />
@@ -63,6 +65,8 @@
       <find>iterations</find>
       <find>numiterations</find>
       <find>batchsize</find>
+      <find>traine</find>
+      <find>nextin</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -81,6 +85,12 @@
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -89,9 +99,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="-8" />
+    <option name="width" value="976" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -108,7 +118,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -146,16 +156,18 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GitP5Project/P5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -281,26 +293,33 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1509542671842</updated>
+      <workItem from="1511772759912" duration="11280000" />
     </task>
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="11280000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27147403" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27041942" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11510417" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -311,37 +330,19 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/SW504/Program.java</url>
-          <line>344</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/SW504/Program.java</url>
-          <line>471</line>
-          <properties />
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/SW504/Program.java</url>
-          <line>370</line>
-          <properties />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="10" />
+      <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -359,22 +360,22 @@
         <state relative-caret-position="1139">
           <caret line="67" column="46" lean-forward="true" selection-start-line="67" selection-start-column="46" selection-end-line="67" selection-end-column="46" />
           <folding>
+            <element signature="method#main#0;class#Program#0" expanded="false" />
             <element signature="method#UiServerSetup#0;class#Program#0" expanded="false" />
+            <element signature="method#initImageReaders#0;class#Program#0" expanded="false" />
             <element signature="method#trainNetwork_withTransformation#0;class#Program#0" expanded="false" />
-            <element signature="method#trainNetwork_withoutTransformation#0;class#Program#0" expanded="false" />
             <element signature="method#saveNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#evaluateNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#maxPool#0;class#Program#0" expanded="false" />
             <element signature="method#earlyStopTraining#0;class#Program#0" expanded="false" />
-            <element signature="e#9716#9725#0" expanded="true" />
-            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#inception5Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception6Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception7Builder#0;class#Program#0" expanded="false" />
+            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#lenetConf#0;class#Program#0" expanded="false" />
-            <element signature="method#alexnetConf#0;class#Program#0" expanded="false" />
             <element signature="method#lenetModel#0;class#Program#0" expanded="false" />
             <element signature="method#alexnetModel#0;class#Program#0" expanded="false" />
+            <element signature="method#fullyConnected#0;class#Program#0" expanded="false" />
             <element signature="method#convInit#0;class#Program#0" expanded="false" />
             <element signature="method#conv3x3#0;class#Program#0" expanded="false" />
             <element signature="method#conv5x5#0;class#Program#0" expanded="false" />
@@ -395,22 +396,22 @@
         <state relative-caret-position="3213">
           <caret line="189" column="54" lean-forward="false" selection-start-line="189" selection-start-column="54" selection-end-line="189" selection-end-column="54" />
           <folding>
+            <element signature="method#main#0;class#Program#0" expanded="false" />
             <element signature="method#UiServerSetup#0;class#Program#0" expanded="false" />
+            <element signature="method#initImageReaders#0;class#Program#0" expanded="false" />
             <element signature="method#trainNetwork_withTransformation#0;class#Program#0" expanded="false" />
-            <element signature="method#trainNetwork_withoutTransformation#0;class#Program#0" expanded="false" />
             <element signature="method#saveNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#evaluateNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#maxPool#0;class#Program#0" expanded="false" />
             <element signature="method#earlyStopTraining#0;class#Program#0" expanded="false" />
-            <element signature="e#9716#9725#0" expanded="true" />
-            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#inception5Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception6Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception7Builder#0;class#Program#0" expanded="false" />
+            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#lenetConf#0;class#Program#0" expanded="false" />
-            <element signature="method#alexnetConf#0;class#Program#0" expanded="false" />
             <element signature="method#lenetModel#0;class#Program#0" expanded="false" />
             <element signature="method#alexnetModel#0;class#Program#0" expanded="false" />
+            <element signature="method#fullyConnected#0;class#Program#0" expanded="false" />
             <element signature="method#convInit#0;class#Program#0" expanded="false" />
             <element signature="method#conv3x3#0;class#Program#0" expanded="false" />
             <element signature="method#conv5x5#0;class#Program#0" expanded="false" />
@@ -431,22 +432,22 @@
         <state relative-caret-position="595">
           <caret line="78" column="41" lean-forward="false" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
           <folding>
+            <element signature="method#main#0;class#Program#0" expanded="false" />
             <element signature="method#UiServerSetup#0;class#Program#0" expanded="false" />
+            <element signature="method#initImageReaders#0;class#Program#0" expanded="false" />
             <element signature="method#trainNetwork_withTransformation#0;class#Program#0" expanded="false" />
-            <element signature="method#trainNetwork_withoutTransformation#0;class#Program#0" expanded="false" />
             <element signature="method#saveNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#evaluateNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#maxPool#0;class#Program#0" expanded="false" />
             <element signature="method#earlyStopTraining#0;class#Program#0" expanded="false" />
-            <element signature="e#9716#9725#0" expanded="true" />
-            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#inception5Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception6Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception7Builder#0;class#Program#0" expanded="false" />
+            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#lenetConf#0;class#Program#0" expanded="false" />
-            <element signature="method#alexnetConf#0;class#Program#0" expanded="false" />
             <element signature="method#lenetModel#0;class#Program#0" expanded="false" />
             <element signature="method#alexnetModel#0;class#Program#0" expanded="false" />
+            <element signature="method#fullyConnected#0;class#Program#0" expanded="false" />
             <element signature="method#convInit#0;class#Program#0" expanded="false" />
             <element signature="method#conv3x3#0;class#Program#0" expanded="false" />
             <element signature="method#conv5x5#0;class#Program#0" expanded="false" />
@@ -483,13 +484,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/dl4j-examples/dl4j-examples/src/main/java/org/deeplearning4j/examples/feedforward/mnist/MLPMnistSingleLayerExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="40" column="41" lean-forward="false" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/dl4j-examples/dl4j-examples/src/main/java/org/deeplearning4j/examples/feedforward/mnist/MLPMnistSingleLayerExample.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/deeplearning4j/deeplearning4j-nn/0.9.1/deeplearning4j-nn-0.9.1.jar!/org/deeplearning4j/nn/weights/WeightInit.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -545,22 +540,22 @@
         <state relative-caret-position="357">
           <caret line="225" column="35" lean-forward="true" selection-start-line="225" selection-start-column="35" selection-end-line="225" selection-end-column="35" />
           <folding>
+            <element signature="method#main#0;class#Program#0" expanded="false" />
             <element signature="method#UiServerSetup#0;class#Program#0" expanded="false" />
+            <element signature="method#initImageReaders#0;class#Program#0" expanded="false" />
             <element signature="method#trainNetwork_withTransformation#0;class#Program#0" expanded="false" />
-            <element signature="method#trainNetwork_withoutTransformation#0;class#Program#0" expanded="false" />
             <element signature="method#saveNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#evaluateNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#maxPool#0;class#Program#0" expanded="false" />
             <element signature="method#earlyStopTraining#0;class#Program#0" expanded="false" />
-            <element signature="e#9716#9725#0" expanded="true" />
-            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#inception5Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception6Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception7Builder#0;class#Program#0" expanded="false" />
+            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#lenetConf#0;class#Program#0" expanded="false" />
-            <element signature="method#alexnetConf#0;class#Program#0" expanded="false" />
             <element signature="method#lenetModel#0;class#Program#0" expanded="false" />
             <element signature="method#alexnetModel#0;class#Program#0" expanded="false" />
+            <element signature="method#fullyConnected#0;class#Program#0" expanded="false" />
             <element signature="method#convInit#0;class#Program#0" expanded="false" />
             <element signature="method#conv3x3#0;class#Program#0" expanded="false" />
             <element signature="method#conv5x5#0;class#Program#0" expanded="false" />
@@ -581,22 +576,22 @@
         <state relative-caret-position="4097">
           <caret line="241" column="41" lean-forward="true" selection-start-line="241" selection-start-column="41" selection-end-line="241" selection-end-column="41" />
           <folding>
+            <element signature="method#main#0;class#Program#0" expanded="false" />
             <element signature="method#UiServerSetup#0;class#Program#0" expanded="false" />
+            <element signature="method#initImageReaders#0;class#Program#0" expanded="false" />
             <element signature="method#trainNetwork_withTransformation#0;class#Program#0" expanded="false" />
-            <element signature="method#trainNetwork_withoutTransformation#0;class#Program#0" expanded="false" />
             <element signature="method#saveNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#evaluateNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#maxPool#0;class#Program#0" expanded="false" />
             <element signature="method#earlyStopTraining#0;class#Program#0" expanded="false" />
-            <element signature="e#9716#9725#0" expanded="true" />
-            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#inception5Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception6Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception7Builder#0;class#Program#0" expanded="false" />
+            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#lenetConf#0;class#Program#0" expanded="false" />
-            <element signature="method#alexnetConf#0;class#Program#0" expanded="false" />
             <element signature="method#lenetModel#0;class#Program#0" expanded="false" />
             <element signature="method#alexnetModel#0;class#Program#0" expanded="false" />
+            <element signature="method#fullyConnected#0;class#Program#0" expanded="false" />
             <element signature="method#convInit#0;class#Program#0" expanded="false" />
             <element signature="method#conv3x3#0;class#Program#0" expanded="false" />
             <element signature="method#conv5x5#0;class#Program#0" expanded="false" />
@@ -624,22 +619,22 @@
         <state relative-caret-position="4845">
           <caret line="285" column="0" lean-forward="false" selection-start-line="285" selection-start-column="0" selection-end-line="285" selection-end-column="0" />
           <folding>
+            <element signature="method#main#0;class#Program#0" expanded="false" />
             <element signature="method#UiServerSetup#0;class#Program#0" expanded="false" />
+            <element signature="method#initImageReaders#0;class#Program#0" expanded="false" />
             <element signature="method#trainNetwork_withTransformation#0;class#Program#0" expanded="false" />
-            <element signature="method#trainNetwork_withoutTransformation#0;class#Program#0" expanded="false" />
             <element signature="method#saveNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#evaluateNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#maxPool#0;class#Program#0" expanded="false" />
             <element signature="method#earlyStopTraining#0;class#Program#0" expanded="false" />
-            <element signature="e#9716#9725#0" expanded="true" />
-            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#inception5Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception6Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception7Builder#0;class#Program#0" expanded="false" />
+            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#lenetConf#0;class#Program#0" expanded="false" />
-            <element signature="method#alexnetConf#0;class#Program#0" expanded="false" />
             <element signature="method#lenetModel#0;class#Program#0" expanded="false" />
             <element signature="method#alexnetModel#0;class#Program#0" expanded="false" />
+            <element signature="method#fullyConnected#0;class#Program#0" expanded="false" />
             <element signature="method#convInit#0;class#Program#0" expanded="false" />
             <element signature="method#conv3x3#0;class#Program#0" expanded="false" />
             <element signature="method#conv5x5#0;class#Program#0" expanded="false" />
@@ -667,22 +662,22 @@
         <state relative-caret-position="4845">
           <caret line="285" column="0" lean-forward="true" selection-start-line="285" selection-start-column="0" selection-end-line="285" selection-end-column="0" />
           <folding>
+            <element signature="method#main#0;class#Program#0" expanded="false" />
             <element signature="method#UiServerSetup#0;class#Program#0" expanded="false" />
+            <element signature="method#initImageReaders#0;class#Program#0" expanded="false" />
             <element signature="method#trainNetwork_withTransformation#0;class#Program#0" expanded="false" />
-            <element signature="method#trainNetwork_withoutTransformation#0;class#Program#0" expanded="false" />
             <element signature="method#saveNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#evaluateNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#maxPool#0;class#Program#0" expanded="false" />
             <element signature="method#earlyStopTraining#0;class#Program#0" expanded="false" />
-            <element signature="e#9716#9725#0" expanded="true" />
-            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#inception5Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception6Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception7Builder#0;class#Program#0" expanded="false" />
+            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#lenetConf#0;class#Program#0" expanded="false" />
-            <element signature="method#alexnetConf#0;class#Program#0" expanded="false" />
             <element signature="method#lenetModel#0;class#Program#0" expanded="false" />
             <element signature="method#alexnetModel#0;class#Program#0" expanded="false" />
+            <element signature="method#fullyConnected#0;class#Program#0" expanded="false" />
             <element signature="method#convInit#0;class#Program#0" expanded="false" />
             <element signature="method#conv3x3#0;class#Program#0" expanded="false" />
             <element signature="method#conv5x5#0;class#Program#0" expanded="false" />
@@ -710,22 +705,22 @@
         <state relative-caret-position="3859">
           <caret line="227" column="2" lean-forward="false" selection-start-line="227" selection-start-column="2" selection-end-line="227" selection-end-column="2" />
           <folding>
+            <element signature="method#main#0;class#Program#0" expanded="false" />
             <element signature="method#UiServerSetup#0;class#Program#0" expanded="false" />
+            <element signature="method#initImageReaders#0;class#Program#0" expanded="false" />
             <element signature="method#trainNetwork_withTransformation#0;class#Program#0" expanded="false" />
-            <element signature="method#trainNetwork_withoutTransformation#0;class#Program#0" expanded="false" />
             <element signature="method#saveNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#evaluateNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#maxPool#0;class#Program#0" expanded="false" />
             <element signature="method#earlyStopTraining#0;class#Program#0" expanded="false" />
-            <element signature="e#9716#9725#0" expanded="true" />
-            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#inception5Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception6Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception7Builder#0;class#Program#0" expanded="false" />
+            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#lenetConf#0;class#Program#0" expanded="false" />
-            <element signature="method#alexnetConf#0;class#Program#0" expanded="false" />
             <element signature="method#lenetModel#0;class#Program#0" expanded="false" />
             <element signature="method#alexnetModel#0;class#Program#0" expanded="false" />
+            <element signature="method#fullyConnected#0;class#Program#0" expanded="false" />
             <element signature="method#convInit#0;class#Program#0" expanded="false" />
             <element signature="method#conv3x3#0;class#Program#0" expanded="false" />
             <element signature="method#conv5x5#0;class#Program#0" expanded="false" />
@@ -746,22 +741,22 @@
         <state relative-caret-position="6086">
           <caret line="358" column="54" lean-forward="false" selection-start-line="358" selection-start-column="54" selection-end-line="358" selection-end-column="54" />
           <folding>
+            <element signature="method#main#0;class#Program#0" expanded="false" />
             <element signature="method#UiServerSetup#0;class#Program#0" expanded="false" />
+            <element signature="method#initImageReaders#0;class#Program#0" expanded="false" />
             <element signature="method#trainNetwork_withTransformation#0;class#Program#0" expanded="false" />
-            <element signature="method#trainNetwork_withoutTransformation#0;class#Program#0" expanded="false" />
             <element signature="method#saveNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#evaluateNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#maxPool#0;class#Program#0" expanded="false" />
             <element signature="method#earlyStopTraining#0;class#Program#0" expanded="false" />
-            <element signature="e#9716#9725#0" expanded="true" />
-            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#inception5Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception6Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception7Builder#0;class#Program#0" expanded="false" />
+            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#lenetConf#0;class#Program#0" expanded="false" />
-            <element signature="method#alexnetConf#0;class#Program#0" expanded="false" />
             <element signature="method#lenetModel#0;class#Program#0" expanded="false" />
             <element signature="method#alexnetModel#0;class#Program#0" expanded="false" />
+            <element signature="method#fullyConnected#0;class#Program#0" expanded="false" />
             <element signature="method#convInit#0;class#Program#0" expanded="false" />
             <element signature="method#conv3x3#0;class#Program#0" expanded="false" />
             <element signature="method#conv5x5#0;class#Program#0" expanded="false" />
@@ -782,22 +777,22 @@
         <state relative-caret-position="1139">
           <caret line="67" column="46" lean-forward="true" selection-start-line="67" selection-start-column="46" selection-end-line="67" selection-end-column="46" />
           <folding>
+            <element signature="method#main#0;class#Program#0" expanded="false" />
             <element signature="method#UiServerSetup#0;class#Program#0" expanded="false" />
+            <element signature="method#initImageReaders#0;class#Program#0" expanded="false" />
             <element signature="method#trainNetwork_withTransformation#0;class#Program#0" expanded="false" />
-            <element signature="method#trainNetwork_withoutTransformation#0;class#Program#0" expanded="false" />
             <element signature="method#saveNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#evaluateNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#maxPool#0;class#Program#0" expanded="false" />
             <element signature="method#earlyStopTraining#0;class#Program#0" expanded="false" />
-            <element signature="e#9716#9725#0" expanded="true" />
-            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#inception5Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception6Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception7Builder#0;class#Program#0" expanded="false" />
+            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#lenetConf#0;class#Program#0" expanded="false" />
-            <element signature="method#alexnetConf#0;class#Program#0" expanded="false" />
             <element signature="method#lenetModel#0;class#Program#0" expanded="false" />
             <element signature="method#alexnetModel#0;class#Program#0" expanded="false" />
+            <element signature="method#fullyConnected#0;class#Program#0" expanded="false" />
             <element signature="method#convInit#0;class#Program#0" expanded="false" />
             <element signature="method#conv3x3#0;class#Program#0" expanded="false" />
             <element signature="method#conv5x5#0;class#Program#0" expanded="false" />
@@ -818,22 +813,22 @@
         <state relative-caret-position="3213">
           <caret line="189" column="54" lean-forward="false" selection-start-line="189" selection-start-column="54" selection-end-line="189" selection-end-column="54" />
           <folding>
+            <element signature="method#main#0;class#Program#0" expanded="false" />
             <element signature="method#UiServerSetup#0;class#Program#0" expanded="false" />
+            <element signature="method#initImageReaders#0;class#Program#0" expanded="false" />
             <element signature="method#trainNetwork_withTransformation#0;class#Program#0" expanded="false" />
-            <element signature="method#trainNetwork_withoutTransformation#0;class#Program#0" expanded="false" />
             <element signature="method#saveNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#evaluateNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#maxPool#0;class#Program#0" expanded="false" />
             <element signature="method#earlyStopTraining#0;class#Program#0" expanded="false" />
-            <element signature="e#9716#9725#0" expanded="true" />
-            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#inception5Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception6Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception7Builder#0;class#Program#0" expanded="false" />
+            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#lenetConf#0;class#Program#0" expanded="false" />
-            <element signature="method#alexnetConf#0;class#Program#0" expanded="false" />
             <element signature="method#lenetModel#0;class#Program#0" expanded="false" />
             <element signature="method#alexnetModel#0;class#Program#0" expanded="false" />
+            <element signature="method#fullyConnected#0;class#Program#0" expanded="false" />
             <element signature="method#convInit#0;class#Program#0" expanded="false" />
             <element signature="method#conv3x3#0;class#Program#0" expanded="false" />
             <element signature="method#conv5x5#0;class#Program#0" expanded="false" />
@@ -854,22 +849,22 @@
         <state relative-caret-position="595">
           <caret line="78" column="41" lean-forward="false" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
           <folding>
+            <element signature="method#main#0;class#Program#0" expanded="false" />
             <element signature="method#UiServerSetup#0;class#Program#0" expanded="false" />
+            <element signature="method#initImageReaders#0;class#Program#0" expanded="false" />
             <element signature="method#trainNetwork_withTransformation#0;class#Program#0" expanded="false" />
-            <element signature="method#trainNetwork_withoutTransformation#0;class#Program#0" expanded="false" />
             <element signature="method#saveNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#evaluateNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#maxPool#0;class#Program#0" expanded="false" />
             <element signature="method#earlyStopTraining#0;class#Program#0" expanded="false" />
-            <element signature="e#9716#9725#0" expanded="true" />
-            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#inception5Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception6Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception7Builder#0;class#Program#0" expanded="false" />
+            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#lenetConf#0;class#Program#0" expanded="false" />
-            <element signature="method#alexnetConf#0;class#Program#0" expanded="false" />
             <element signature="method#lenetModel#0;class#Program#0" expanded="false" />
             <element signature="method#alexnetModel#0;class#Program#0" expanded="false" />
+            <element signature="method#fullyConnected#0;class#Program#0" expanded="false" />
             <element signature="method#convInit#0;class#Program#0" expanded="false" />
             <element signature="method#conv3x3#0;class#Program#0" expanded="false" />
             <element signature="method#conv5x5#0;class#Program#0" expanded="false" />
@@ -906,13 +901,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/dl4j-examples/dl4j-examples/src/main/java/org/deeplearning4j/examples/feedforward/mnist/MLPMnistSingleLayerExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="40" column="41" lean-forward="false" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/dl4j-examples/dl4j-examples/src/main/java/org/deeplearning4j/examples/feedforward/mnist/MLPMnistSingleLayerExample.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/deeplearning4j/deeplearning4j-nn/0.9.1/deeplearning4j-nn-0.9.1.jar!/org/deeplearning4j/nn/weights/WeightInit.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -922,7 +911,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
+        <state relative-caret-position="966">
           <caret line="46" column="28" lean-forward="false" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
           <folding />
         </state>
@@ -965,25 +954,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/SW504/Program.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="226" column="130" lean-forward="true" selection-start-line="226" selection-start-column="130" selection-end-line="226" selection-end-column="130" />
+        <state relative-caret-position="2100">
+          <caret line="249" column="4" lean-forward="false" selection-start-line="249" selection-start-column="4" selection-end-line="249" selection-end-column="4" />
           <folding>
+            <element signature="method#main#0;class#Program#0" expanded="false" />
             <element signature="method#UiServerSetup#0;class#Program#0" expanded="false" />
+            <element signature="method#initImageReaders#0;class#Program#0" expanded="false" />
             <element signature="method#trainNetwork_withTransformation#0;class#Program#0" expanded="false" />
-            <element signature="method#trainNetwork_withoutTransformation#0;class#Program#0" expanded="false" />
             <element signature="method#saveNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#evaluateNetwork#0;class#Program#0" expanded="false" />
             <element signature="method#maxPool#0;class#Program#0" expanded="false" />
             <element signature="method#earlyStopTraining#0;class#Program#0" expanded="false" />
-            <element signature="e#9716#9725#0" expanded="true" />
-            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#inception5Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception6Builder#0;class#Program#0" expanded="false" />
             <element signature="method#inception7Builder#0;class#Program#0" expanded="false" />
+            <element signature="method#nameLayer#0;class#Program#0" expanded="false" />
             <element signature="method#lenetConf#0;class#Program#0" expanded="false" />
-            <element signature="method#alexnetConf#0;class#Program#0" expanded="false" />
             <element signature="method#lenetModel#0;class#Program#0" expanded="false" />
             <element signature="method#alexnetModel#0;class#Program#0" expanded="false" />
+            <element signature="method#fullyConnected#0;class#Program#0" expanded="false" />
             <element signature="method#convInit#0;class#Program#0" expanded="false" />
             <element signature="method#conv3x3#0;class#Program#0" expanded="false" />
             <element signature="method#conv5x5#0;class#Program#0" expanded="false" />
