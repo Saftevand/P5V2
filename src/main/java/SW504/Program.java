@@ -70,8 +70,8 @@ public class Program {
     protected static int iterations = 1;
     protected static int epochs = 10;
     //Paths for test and training sets
-    protected static File trainPath  =  new File("C:/Users/marku/Desktop/NeuralNetwork/trainSet");
-    protected static File testPath = new File("C:/Users/marku/Desktop/NeuralNetwork/testSet");
+    protected static File trainPath  =  new File("C:/Users/palmi/Desktop/NeuralTesting/trainSet");
+    protected static File testPath = new File("C:/Users/palmi/Desktop/NeuralTesting/testSet");
     private static FileSplit trainData = new FileSplit(trainPath, NativeImageLoader.ALLOWED_FORMATS,rng);
     private static FileSplit testData = new FileSplit(testPath,NativeImageLoader.ALLOWED_FORMATS,rng);
     protected static boolean trainWithTransform = false;
@@ -85,10 +85,19 @@ public class Program {
     public static void main(String[] args) throws Exception {
         initImageReaders();
 
-        trainedNetwork = normalTraining(trainedNetwork);
-        evaluateNetwork(testReader,new ImagePreProcessingScaler(0,1),testData,trainedNetwork);
-        saveNetwork("trained_model.zip",trainedNetwork);
+        //trainedNetwork = normalTraining(trainedNetwork);
+        //evaluateNetwork(testReader,new ImagePreProcessingScaler(0,1),testData,trainedNetwork);
+        //saveNetwork("trained_model.zip",trainedNetwork);
+        ComputationGraph network = inceptionModel();
+        network.setListeners(new ScoreIterationListener(1));
+        DataSetIterator dataIterator = new RecordReaderDataSetIterator(trainingReader,batchSize,1,numLabels);
 
+        DataNormalization scaler = new ImagePreProcessingScaler(0,1);
+        scaler.fit(dataIterator);
+        dataIterator.setPreProcessor(scaler);
+        for( int i=0; i<epochs; i++ ){
+            network.fit(dataIterator);
+        }
     }
 
     private static void UiServerSetup(){
@@ -204,7 +213,6 @@ public class Program {
             System.out.println("Running Epoch: " + i);
             model.fit(dataIterator);
         }
-
         return model;
     }
 
@@ -308,11 +316,11 @@ public class Program {
                     .addLayer(nameLayer(blockName,"cnn9",i), new ConvolutionLayer.Builder(new int[]{1, n}).convolutionMode(ConvolutionMode.Same).nIn(out32).nOut(out32).build(), nameLayer(blockName,"cnn8",i))
                     .addLayer(nameLayer(blockName,"cnn10",i), new ConvolutionLayer.Builder(new int[]{n, 1}).convolutionMode(ConvolutionMode.Same).nIn(out32).nOut(out32).build(), nameLayer(blockName,"cnn9",i))
                     // merge
-                    .addVertex(nameLayer(blockName,"merge2",i),new MergeVertex(),nameLayer(blockName,"cnn2",i),nameLayer(blockName,"cnn5",i),nameLayer(blockName,"cnn9",i));
+                    .addVertex(nameLayer(blockName,"merge2",i),new MergeVertex(),nameLayer(blockName,"cnn2",i),nameLayer(blockName,"cnn5",i),nameLayer(blockName,"cnn10",i),nameLayer(blockName,"cnn1",i));
 
 
             previousBlock = nameLayer(blockName,"merge2",i);
-            blockInput = out4 + out16 + out32 + out64 + out96;
+            blockInput = out32 + out64 + out64 + out96;
             out4 += 4;
             out16 += 16;
             out32 += 32;
@@ -347,7 +355,7 @@ public class Program {
                     .addVertex(nameLayer(blockName,"merge3",i),new MergeVertex(),nameLayer(blockName,"cnn1",i),nameLayer(blockName,"cnn2",i),nameLayer(blockName,"cnn6",i),nameLayer(blockName,"cnn10",i));
 
             previousBlock = nameLayer(blockName,"merge3",i);
-            blockInput = out64 + out128 + out160 + out192 + out256;
+            blockInput = out128 + out128 + out160 + out160 + out192 + out256;
             out64 += 64;
             out160 += 160;
             out128 += 128;
