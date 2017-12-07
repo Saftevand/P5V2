@@ -9,12 +9,17 @@ import org.datavec.api.records.listener.impl.LogRecordListener;
 import org.deeplearning4j.nn.conf.inputs.InputType;
 import org.datavec.api.split.FileSplit;
 import org.datavec.api.split.InputSplit;
+import org.deeplearning4j.nn.conf.layers.DenseLayer;
+import org.deeplearning4j.nn.conf.layers.OutputLayer;
+import org.deeplearning4j.nn.conf.layers.ConvolutionLayer;
+import org.deeplearning4j.nn.conf.layers.SubsamplingLayer;
 import org.datavec.image.loader.NativeImageLoader;
 import org.datavec.image.recordreader.ImageRecordReader;
 import org.datavec.image.transform.FlipImageTransform;
 import org.datavec.image.transform.ImageTransform;
 import org.datavec.image.transform.WarpImageTransform;
 import org.deeplearning4j.api.storage.StatsStorage;
+import org.deeplearning4j.nn.conf.layers.GlobalPoolingLayer;
 import org.deeplearning4j.datasets.datavec.RecordReaderDataSetIterator;
 import org.deeplearning4j.datasets.iterator.MultipleEpochsIterator;
 import org.deeplearning4j.earlystopping.EarlyStoppingConfiguration;
@@ -250,6 +255,7 @@ public class Program {
                 .addLayer("conv4", convInit("conv4", 64, 80, new int[]{3, 3}, new int[]{1, 1}, new int[]{0, 0}, 0), "pool1")
                 .addLayer("conv5", convInit("conv5", 80, 192, new int[]{3, 3}, new int[]{2, 2}, new int[]{0, 0}, 0), "conv4")
                 .addLayer("conv6", convInit("conv6", 192, 288, new int[]{3, 3}, new int[]{1, 1}, new int[]{1, 1}, 0), "conv5");
+
         //3x factorized, regular inception layers
         nextInput = inceptionFive(graph, "incep1", "conv6");
         nextInput = inceptionFive(graph, "incep2", nextInput);
@@ -273,11 +279,12 @@ public class Program {
         nextInput = inceptionSeven(graph, "incep10", nextInput, new int[][]{{320},{192},{384,384,384},{448,384,384,384}});
 
         graph
-                .addLayer("pool2", new SubsamplingLayer.Builder(new int[]{8,8}, new int[]{1,1}, new int[]{0,0}).build(),nextInput)
-                .addLayer("logic", new DenseLayer.Builder().nIn(2048).nOut(1000).build(),"pool2")
-                //.setInputTypes(InputType.convolutionalFlat(1,1,2048))
-                .addLayer("classifier", new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD).activation(Activation.SOFTMAX).nOut(numLabels).nIn(1000).build(),"pool2")
-                .setOutputs("classifier");
+                .addLayer("pool2", new GlobalPoolingLayer.Builder().poolingType(PoolingType.AVG).build(),nextInput)
+                //.addLayer("pool2", new SubsamplingLayer.Builder(SubsamplingLayer.PoolingType.AVG, new int[]{8,8}, new int[]{1,1}, new int[]{0,0}).build(),nextInput)
+                .addLayer("logic", new DenseLayer.Builder().nIn(2048).nOut(1000).biasInit(1).build(), "pool2")
+                .setOutputs("classifier")
+                .addLayer("classifier", new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD).activation(Activation.SOFTMAX).nOut(numLabels).nIn(1000).build(),"logic");
+                //.setInputTypes(InputType.convolutional(299,299,3)).build();
 
 
         ComputationGraphConfiguration conf = graph.build();
@@ -395,7 +402,6 @@ public class Program {
 
     public static String inceptionSeven(ComputationGraphConfiguration.GraphBuilder graph, String blockName, String input, int[][] array) {
         int blockInput = 1280;
-       // int out192 = 192, out288 = 288, out320 = 320, out384 = 384;
 
         graph
                 // 1x1
