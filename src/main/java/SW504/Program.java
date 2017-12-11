@@ -2,6 +2,9 @@ package SW504;
 
 import org.datavec.api.io.filters.BalancedPathFilter;
 import org.datavec.api.io.labels.ParentPathLabelGenerator;
+import org.deeplearning4j.earlystopping.EarlyStoppingModelSaver;
+import org.deeplearning4j.earlystopping.listener.EarlyStoppingListener;
+import org.deeplearning4j.earlystopping.saver.InMemoryModelSaver;
 import org.deeplearning4j.nn.api.Model;
 import org.deeplearning4j.zoo.model.AlexNet;
 import org.deeplearning4j.zoo.model.InceptionResNetV1;
@@ -70,20 +73,20 @@ import java.util.concurrent.TimeUnit;
 
 public class Program {
     //Height Width and channels of pictures
-    protected static int height = 299;
-    protected static int width = 299;
+    protected static int height = 99;
+    protected static int width = 99;
     protected static int channels = 3;
     //Number of possible labels = number of outputs
     protected static int numLabels = 5;
     //Batchsize is the number of pictures loaded in memory at runtime
-    protected static int batchSize = 1;
+    protected static int batchSize = 16;
     protected static long seed = 42;
     protected static Random rng = new Random(seed);
     protected static int iterations = 1;
-    protected static int epochs = 10;
+    protected static int epochs = 15;
     //Paths for test and training sets
-    protected static File trainPath  =  new File("C:/Users/marku/Desktop/NeuralNetwork/trainSet");
-    protected static File testPath = new File("C:/Users/marku/Desktop/NeuralNetwork/testSet");
+    protected static File trainPath  =  new File("C:/Users/palmi/Desktop/NeuralTesting/trainSet");
+    protected static File testPath = new File("C:/Users/palmi/Desktop/NeuralTesting/testSet");
     private static FileSplit trainData = new FileSplit(trainPath, NativeImageLoader.ALLOWED_FORMATS,rng);
     private static FileSplit testData = new FileSplit(testPath,NativeImageLoader.ALLOWED_FORMATS,rng);
     protected static boolean trainWithTransform = false;
@@ -97,30 +100,33 @@ public class Program {
     public static void main(String[] args) throws Exception {
         initImageReaders();
 
-        //trainedNetwork = normalTraining(trainedNetwork);
-        //evaluateNetwork(testReader,new ImagePreProcessingScaler(0,1),testData,trainedNetwork);
-        //saveNetwork("trained_model.zip",trainedNetwork);
+        trainedNetwork = normalTraining(trainedNetwork);
+        evaluateNetwork(testReader,new ImagePreProcessingScaler(0,1),testData,trainedNetwork);
+        saveNetwork("trained_model.zip",trainedNetwork);
+
+        /*
         ComputationGraph network = inceptionModel();
-        network.setListeners(new ScoreIterationListener(1));
+        UIServer uiServer = UIServer.getInstance();
+        StatsStorage statsStorage = new InMemoryStatsStorage();
+        uiServer.attach(statsStorage);
+        network.setListeners(new StatsListener(statsStorage));
         DataSetIterator dataIterator = new RecordReaderDataSetIterator(trainingReader,batchSize,1,numLabels);
-
-     //   ZooModel zooResNet = new InceptionResNetV1(5,42,1);
-     //   Model ResModel = zooResNet.init();
-
 
         DataNormalization scaler = new ImagePreProcessingScaler(0,1);
         scaler.fit(dataIterator);
         dataIterator.setPreProcessor(scaler);
         for( int i=0; i<epochs; i++ ){
+            System.out.println("Running Epoch: " + i);
             network.fit(dataIterator);
         }
+        */
     }
 
     private static void UiServerSetup(){
         UIServer uiServer = UIServer.getInstance();
         StatsStorage statsStorage = new InMemoryStatsStorage();
         uiServer.attach(statsStorage);
-        //trainedNetwork.setListeners(new StatsListener(statsStorage));
+        trainedNetwork.setListeners(new StatsListener(statsStorage));
     }
 
     private static void initImageReaders() throws IOException {
@@ -194,19 +200,17 @@ public class Program {
                 .epochTerminationConditions(new MaxEpochsTerminationCondition(epochs))
                 .scoreCalculator(new DataSetLossCalculator(validationSet,true))
                 .evaluateEveryNEpochs(1)
-                .modelSaver(new LocalFileModelSaver("trained_model.zip"))
+                .modelSaver(new LocalFileModelSaver("dir"))
+                .saveLastModel(true)
                 .build();
 
         EarlyStoppingTrainer esTrainer = new EarlyStoppingTrainer(esConf,alexnetConf(),trainingSet);
-
         EarlyStoppingResult result = esTrainer.fit();
-
         System.out.println("Termination reason: " + result.getTerminationReason());
         System.out.println("Termination details: " + result.getTerminationDetails());
         System.out.println("Total epochs: " + result.getTotalEpochs());
         System.out.println("Best epoch number: " + result.getBestModelEpoch());
         System.out.println("Score at best epoch: " + result.getBestModelScore());
-
         //Print score vs. epoch
         Map<Integer,Double> scoreVsEpoch = result.getScoreVsEpoch();
         List<Integer> list = new ArrayList<Integer>(scoreVsEpoch.keySet());
@@ -219,16 +223,16 @@ public class Program {
 
     private static MultiLayerNetwork normalTraining(MultiLayerNetwork model) throws Exception{
         DataSetIterator dataIterator = new RecordReaderDataSetIterator(trainingReader,batchSize,1,numLabels);
-
         DataNormalization scaler = new ImagePreProcessingScaler(0,1);
         scaler.fit(dataIterator);
         dataIterator.setPreProcessor(scaler);
         trainedNetwork.init();
-        trainedNetwork.setListeners(new ScoreIterationListener(1));
+        UiServerSetup();
         for(int i = 0; i < epochs; i++){
             System.out.println("Running Epoch: " + i);
             model.fit(dataIterator);
         }
+
         return model;
     }
 
@@ -248,11 +252,11 @@ public class Program {
 
         graph
                 .addInputs("input")
-                .addLayer("conv1", convInit("conv1", channels, 32, new int[]{3, 3}, new int[]{2, 2}, new int[]{0, 0}, 0), "input")
+                .addLayer("conv1", convInit("conv1", channels, 32, new int[]{3, 3}, new int[]{1, 1}, new int[]{0, 0}, 0), "input")
                 .addLayer("conv2", convInit("conv2", 32, 32, new int[]{3, 3}, new int[]{1, 1}, new int[]{0, 0}, 0), "conv1")
                 .addLayer("conv3Padded", convInit("conv3Padded", 32, 64, new int[]{3, 3}, new int[]{1, 1}, new int[]{1, 1}, 0), "conv2")
-                .addLayer("pool1", maxPool("pool1", new int[]{3, 3}), "conv3Padded")
-                .addLayer("conv4", convInit("conv4", 64, 80, new int[]{3, 3}, new int[]{1, 1}, new int[]{0, 0}, 0), "pool1")
+                //.addLayer("pool1", maxPool("pool1", new int[]{3, 3}), "conv3Padded")
+                .addLayer("conv4", convInit("conv4", 64, 80, new int[]{3, 3}, new int[]{1, 1}, new int[]{0, 0}, 0), "conv3Padded")
                 .addLayer("conv5", convInit("conv5", 80, 192, new int[]{3, 3}, new int[]{2, 2}, new int[]{0, 0}, 0), "conv4")
                 .addLayer("conv6", convInit("conv6", 192, 288, new int[]{3, 3}, new int[]{1, 1}, new int[]{1, 1}, 0), "conv5");
 
@@ -430,123 +434,6 @@ public class Program {
     }
 
 
-    //De her er de falske
-
-    public static String inception5Builder(ComputationGraphConfiguration.GraphBuilder graph, String blockName, int scale, String input) {
-        int blockInput = 288;
-        int out16 = 16, out32 = 32,out96 = 96,out128 = 128,out64 = 64;
-
-        String previousBlock = input;
-        for(int i=1; i<=scale; i++) {
-
-
-            graph
-                    // 1x1 -> 3x3 -> 3x3
-                    .addLayer(nameLayer(blockName,"cnn1",i), new ConvolutionLayer.Builder(new int[]{1, 1}).convolutionMode(ConvolutionMode.Same).nIn(blockInput).stride(1,1).nOut(out16).build(), previousBlock)
-                    .addLayer(nameLayer(blockName,"cnn2",i), new ConvolutionLayer.Builder(new int[]{3, 3}).convolutionMode(ConvolutionMode.Same).nIn(out16).stride(1,1).padding(1, 1).nOut(out32).build(), nameLayer(blockName,"cnn1",i))
-                    .addLayer(nameLayer(blockName,"cnn3",i), new ConvolutionLayer.Builder(new int[]{3, 3}).convolutionMode(ConvolutionMode.Same).nIn(out32).stride(1,1).padding(1, 1).nOut(out32).build(), nameLayer(blockName,"cnn2",i))
-
-                    //1x1 -> 3x3
-                    .addLayer(nameLayer(blockName,"cnn4",i), new ConvolutionLayer.Builder(new int[]{1, 1}).convolutionMode(ConvolutionMode.Same).nIn(blockInput).stride(1,1).nOut(out96).build(), previousBlock)
-                    .addLayer(nameLayer(blockName,"cnn5",i), new ConvolutionLayer.Builder(new int[]{3, 3}).convolutionMode(ConvolutionMode.Same).nIn(out96).stride(1,1).padding(1, 1).nOut(out128).build(), nameLayer(blockName,"cnn4",i))
-
-                    //pool -> 1x1
-                    .addLayer(nameLayer(blockName,"pool1",i),maxPool("pool1",new int[]{3,3}),previousBlock)
-                    .addLayer(nameLayer(blockName,"cnn6",i), new ConvolutionLayer.Builder(new int[]{1, 1}).convolutionMode(ConvolutionMode.Same).nIn(blockInput).stride(1,1).padding(10, 10).nOut(out32).build(), nameLayer(blockName,"pool1",i))
-
-                    //1x1
-                    .addLayer(nameLayer(blockName,"cnn7",i), new ConvolutionLayer.Builder(new int[]{1, 1}).convolutionMode(ConvolutionMode.Same).nIn(blockInput).stride(1,1).nOut(out64).build(),previousBlock)
-
-                    //Merge
-                    .addVertex(nameLayer(blockName,"merge1",i),new MergeVertex(),nameLayer(blockName,"cnn3",i),nameLayer(blockName,"cnn5",i),nameLayer(blockName,"cnn6",i),nameLayer(blockName,"cnn7",i));
-
-            previousBlock = nameLayer(blockName,"merge1",i);
-
-            blockInput = out32 + out128 + out64 + out32;
-            out16 += 16;
-            out32 += 32;
-            out64 += 64;
-            out96 += 96;
-            out128 += 128;
-        }
-        return previousBlock;
-    }
-
-    public static String inception6Builder(ComputationGraphConfiguration.GraphBuilder graph, String blockName, int scale, String input) {
-        int blockInput = 768;
-        String previousBlock = input;
-        int out4 = 4, out16 = 16, out32 = 32, out64 = 64, out96 = 96;
-
-        int n = 7;
-        for(int i=1; i<=scale; i++) {
-            graph
-                    // 1x1
-                    .addLayer(nameLayer(blockName,"cnn1a",i), new ConvolutionLayer.Builder(new int[]{1, 1}).convolutionMode(ConvolutionMode.Same).nIn(blockInput).nOut(out96).build(), previousBlock)
-                    // pool -> 1x1
-                    .addLayer(nameLayer(blockName,"pool2",i),maxPool("pool2",new int[]{3,3}),previousBlock)
-                    .addLayer(nameLayer(blockName,"cnn2",i),convInit("cnn2",blockInput,out32,new int[]{1,1},new int[]{1,1},new int[]{0,0},0),nameLayer(blockName,"pool2",i))
-                    // 1x1 -> 1xn -> nx1
-                    .addLayer(nameLayer(blockName,"cnn3",i), new ConvolutionLayer.Builder(new int[]{1, 1}).convolutionMode(ConvolutionMode.Same).nIn(blockInput).nOut(out16).build(), previousBlock)
-                    .addLayer(nameLayer(blockName,"cnn4",i), new ConvolutionLayer.Builder(new int[]{1, n}).convolutionMode(ConvolutionMode.Same).nIn(out16).nOut(out32).build(), nameLayer(blockName,"cnn3",i))
-                    .addLayer(nameLayer(blockName,"cnn5",i), new ConvolutionLayer.Builder(new int[]{n, 1}).convolutionMode(ConvolutionMode.Same).nIn(out32).nOut(out64).build(), nameLayer(blockName,"cnn4",i))
-                    // 1x1 -> 1xn -> nx1 -> 1xn -> nx1
-                    .addLayer(nameLayer(blockName,"cnn6",i), new ConvolutionLayer.Builder(new int[]{1, 1}).convolutionMode(ConvolutionMode.Same).nIn(blockInput).nOut(out4).build(), previousBlock)
-                    .addLayer(nameLayer(blockName,"cnn7",i), new ConvolutionLayer.Builder(new int[]{1, n}).convolutionMode(ConvolutionMode.Same).nIn(out4).nOut(out16).build(), nameLayer(blockName,"cnn6",i))
-                    .addLayer(nameLayer(blockName,"cnn8",i), new ConvolutionLayer.Builder(new int[]{n, 1}).convolutionMode(ConvolutionMode.Same).nIn(out16).nOut(out32).build(), nameLayer(blockName,"cnn7",i))
-                    .addLayer(nameLayer(blockName,"cnn9",i), new ConvolutionLayer.Builder(new int[]{1, n}).convolutionMode(ConvolutionMode.Same).nIn(out32).nOut(out32).build(), nameLayer(blockName,"cnn8",i))
-                    .addLayer(nameLayer(blockName,"cnn10",i), new ConvolutionLayer.Builder(new int[]{n, 1}).convolutionMode(ConvolutionMode.Same).nIn(out32).nOut(out32).build(), nameLayer(blockName,"cnn9",i))
-                    // merge
-                    .addVertex(nameLayer(blockName,"merge2",i),new MergeVertex(),nameLayer(blockName,"cnn2",i),nameLayer(blockName,"cnn5",i),nameLayer(blockName,"cnn10",i),nameLayer(blockName,"cnn1a",i));
-
-
-            previousBlock = nameLayer(blockName,"merge2",i);
-            blockInput = out32 + out64 + out64 + out96;
-            out4 += 4;
-            out16 += 16;
-            out32 += 32;
-            out64 += 64;
-            out96 += 96;
-        }
-        return previousBlock;
-    }
-
-    public static String inception7Builder(ComputationGraphConfiguration.GraphBuilder graph, String blockName, int scale, String input) {
-        String previousBlock = input;
-        int blockInput = 1280;
-        int out64 = 64, out128 = 128, out160 = 160, out192 = 192, out256 = 256;
-
-        for(int i=1; i<=scale; i++) {
-            graph
-                    // 1x1
-                    .addLayer(nameLayer(blockName,"cnn1b",i), new ConvolutionLayer.Builder(new int[]{1, 1}).convolutionMode(ConvolutionMode.Same).nIn(blockInput).nOut(out192).build(), previousBlock)
-                    // pool -> 1x1
-                    .addLayer(nameLayer(blockName,"pool2",i),maxPool("pool2",new int[]{3,3}),previousBlock)
-                    .addLayer(nameLayer(blockName,"cnn2",i),convInit("cnn2",blockInput,out256,new int[]{1,1},new int[]{1,1},new int[]{0,0},0),nameLayer(blockName,"pool2",i))
-                    // 1x1 -> 1x3 ; 3x1
-                    .addLayer(nameLayer(blockName,"cnn4",i), new ConvolutionLayer.Builder(new int[]{1, 1}).convolutionMode(ConvolutionMode.Same).nIn(blockInput).nOut(out64).build(), previousBlock)
-                    .addLayer(nameLayer(blockName,"cnn5",i), new ConvolutionLayer.Builder(new int[]{1, 3}).convolutionMode(ConvolutionMode.Same).nIn(out64).nOut(out128).build(), nameLayer(blockName,"cnn4",i))
-                    .addLayer(nameLayer(blockName,"cnn6",i), new ConvolutionLayer.Builder(new int[]{3, 1}).convolutionMode(ConvolutionMode.Same).nIn(out64).nOut(out128).build(), nameLayer(blockName,"cnn4",i))
-                    // 1x1 -> 3x3 -> 1x3 ; 3x1
-                    .addLayer(nameLayer(blockName,"cnn7",i), new ConvolutionLayer.Builder(new int[]{1, 1}).convolutionMode(ConvolutionMode.Same).nIn(blockInput).nOut(out64).build(), previousBlock)
-                    .addLayer(nameLayer(blockName,"cnn8",i), new ConvolutionLayer.Builder(new int[]{3, 3}).convolutionMode(ConvolutionMode.Same).nIn(out64).nOut(out128).build(), nameLayer(blockName,"cnn7",i))
-                    .addLayer(nameLayer(blockName,"cnn9",i), new ConvolutionLayer.Builder(new int[]{3, 1}).convolutionMode(ConvolutionMode.Same).nIn(out128).nOut(out160).build(), nameLayer(blockName,"cnn8",i))
-                    .addLayer(nameLayer(blockName,"cnn10",i), new ConvolutionLayer.Builder(new int[]{1, 3}).convolutionMode(ConvolutionMode.Same).nIn(out128).nOut(out160).build(), nameLayer(blockName,"cnn8",i))
-                    // Merge
-                    .addVertex(nameLayer(blockName,"merge3",i),new MergeVertex(),nameLayer(blockName,"cnn1b",i),nameLayer(blockName,"cnn2",i),nameLayer(blockName,"cnn6",i),nameLayer(blockName,"cnn10",i));
-
-            previousBlock = nameLayer(blockName,"merge3",i);
-            blockInput = out128 + out128 + out160 + out160 + out192 + out256;
-            out64 += 64;
-            out160 += 160;
-            out128 += 128;
-            out192 += 192;
-            out256 += 256;
-        }
-        return previousBlock;
-    }
-
-    //De falske er slut
-
 
     public static String nameLayer(String blockName, String layerName, int i) { return blockName+"-"+layerName+"-"+i; }
 
@@ -578,7 +465,7 @@ public class Program {
 
     public static MultiLayerConfiguration alexnetConf(){
         double nonZeroBias = 1;
-        double dropOut = 0.5;
+        double dropOut = 0;
 
         MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
                 .seed(seed)
@@ -589,15 +476,10 @@ public class Program {
                 .iterations(iterations)
                 .gradientNormalization(GradientNormalization.RenormalizeL2PerLayer) // normalize to prevent vanishing or exploding gradients
                 .optimizationAlgo(OptimizationAlgorithm.STOCHASTIC_GRADIENT_DESCENT)
-                .learningRate(0.001)
-                .biasLearningRate(1e-2*2)
-                .learningRateDecayPolicy(LearningRatePolicy.Step)
-                .lrPolicyDecayRate(0.1)
-                .lrPolicySteps(100000)
-                .regularization(true)
-                .l2(5 * 1e-4)
+                .learningRate(0.01)
+                .regularization(true).l2(0.0001)
                 .list()
-                .layer(0, convInit("cnn1", channels, 96, new int[]{11, 11}, new int[]{4, 4}, new int[]{3, 3}, 0))
+                .layer(0, convInit("cnn1", channels, 96, new int[]{11, 11}, new int[]{2, 2}, new int[]{10, 10}, 0))
                 .layer(1, new LocalResponseNormalization.Builder().name("lrn1").build())
                 .layer(2, maxPool("maxpool1", new int[]{3,3}))
                 .layer(3, conv5x5("cnn2", 256, new int[] {1,1}, new int[] {2,2}, nonZeroBias))
